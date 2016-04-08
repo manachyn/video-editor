@@ -1,0 +1,49 @@
+@import "../../../variables";
+
+:root {
+  --error-box-background-color: rgba(90, 2, 2, 0.8);
+  --error-box-font-size: 1.4rem;
+  --error-box-text-color: color(var(--brand-light) shade(10%));
+  --error-box-border-color: color(var(--brand-black) tint(35%));
+
+  --title-font-size: 2rem;
+  --content-line-height: 1.8em;
+  --code-font-size: 3rem;
+}
+
+.error-box {
+  position: absolute 0;
+  padding: 2em 1em;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--error-box-background-color);
+  color: var(--error-box-text-color);
+  font-size: var(--error-box-font-size);
+  border-bottom: 1px solid var(--error-box-border-color);
+  text-shadow: 0 1px 2px rgba(#000, 0.8);
+  box-shadow: 0 1px 3px 1px rgba(#000, 0.2);
+}
+
+.content {
+  line-height: var(--content-line-height);
+  text-align: center;
+}
+
+.title {
+  composes: content;
+  font-size: var(--title-font-size);
+  font-weight: bold;
+}
+
+.body {
+  composes: content;
+  margin: 0;
+}
+
+.code {
+  margin-right: 0.4em;
+  font-size: var(--code-font-size);
+}

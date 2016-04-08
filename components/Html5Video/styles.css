@@ -1,0 +1,14 @@
+@import "../variables";
+
+:root {
+  --outline-color: var(--brand-info);
+}
+
+.video {
+  size: 100%;
+  display: block;
+
+  &:focus {
+    outline: 1px dotted var(--outline-color);
+  }
+}

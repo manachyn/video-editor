@@ -1,0 +1,18 @@
+@import "../variables";
+
+:root {
+  --selection-background-color: color(var(--brand-black) lightness(+20%));
+  --selection-color: color(var(--brand-light) shade(16%));
+}
+
+.editor {
+
+  ::selection {
+    background-color: var(--selection-background-color);
+    color: var(--selection-color);
+  }
+}
+
+.main {
+  display: flex;
+}

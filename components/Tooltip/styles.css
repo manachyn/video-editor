@@ -1,0 +1,50 @@
+@import "../variables";
+
+:root {
+  --tooltip-background: color(var(--brand-black) shade(20%));
+  --tooltip-text-color: var(--brand-light);
+  --tooltip-padding: 0.4rem;
+  --tooltip-z-index: 100;
+  --tooltip-font-family: var(--font-family);
+  --tooltip-font-size: 1rem;
+  --tooltip-border-radius: 2px;
+  --tooltip-animation-curve: var(--animation-curve);
+}
+
+.container {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  display: block;
+  left: 50%;
+  padding: var(--tooltip-padding);
+  z-index: var(--tooltip-z-index);
+  text-align: center;
+  font-family: var(--tooltip-font-family);
+  font-size: var(--tooltip-font-size);
+  background-color: var(--tooltip-background);
+  color: var(--tooltip-text-color);
+  border-radius: var(--tooltip-border-radius);
+  transition: var(--tooltip-animation-curve) 0.2s transform;
+  transform-origin: top left;
+}
+
+.top {
+  bottom: 100%;
+}
+
+.bottom {
+  top: 100%;
+}
+
+.visible {
+  composes: tooltip;
+  transform: scale(1) translateX(-50%);
+}
+
+.hidden {
+  composes: tooltip;
+  transform: scale(0) translateX(-50%);
+}

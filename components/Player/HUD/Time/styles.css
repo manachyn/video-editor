@@ -1,0 +1,16 @@
+@import "../../../variables";
+
+:root {
+  --time-background: rgba(#000, 0.6);
+  --time-text-color: var(--brand-light);
+}
+
+.time {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.2rem 1rem;
+  background-color: var(--time-background);
+  color: var(--time-text-color);
+  font-size: 3.2rem;
+}

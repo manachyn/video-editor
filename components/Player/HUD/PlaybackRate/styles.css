@@ -1,0 +1,16 @@
+@import "../../../variables";
+
+:root {
+  --playback-rate-text-color: var(--brand-light);
+  --playback-rate-background: rgba(#000, 0.6);
+}
+
+.playbackRate {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0.2rem 1rem;
+  background-color: var(--playback-rate-background);
+  color: var(--playback-rate-text-color);
+  font-size: 3.2rem;
+}

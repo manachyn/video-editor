@@ -1,0 +1,81 @@
+@import "../../../variables";
+
+:root {
+  --debug-monitor-background-color: rgba(#000, 0.6);
+  --debug-monitor-font-size: 1.2rem;
+  --debug-monitor-text-color: color(var(--brand-light) shade(10%));
+  --debug-monitor-border-color: #0a0a0a;
+
+  --playback-background-color: rgba(var(--brand-danger), 0.1);
+  --network-state-background-color: rgba(var(--brand-info), 0.1);
+  --ready-state-background-color: rgba(var(--brand-danger), 0.1);
+
+  --code-font-size: 1.4rem;
+  --code-text-color: var(--brand-light);
+  --title-text-color: color(var(--brand-warning) shade(10%));
+}
+
+.debug-monitor {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0 1em;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: var(--debug-monitor-background-color);
+  color: var(--debug-monitor-text-color);
+  font-size: var(--debug-monitor-font-size);
+  border-bottom: 1px solid var(--debug-monitor-border-color);
+  text-shadow: 0 2px 1px rgba(#000, 0.6);
+  box-shadow: 0 1px 3px 1px rgba(#000, 0.2);
+}
+
+.content {
+  box-sizing: border-box;
+  padding: 0.4em 0.8em;
+  width: 100%;
+  border-radius: 2px;
+}
+
+.playback {
+  composes: content;
+  list-style-type: none;
+  background-color: var(--playback-background-color);
+}
+
+.label {
+  display: inline-block;
+  width: 7em;
+  text-align: right;
+  margin-right: 1em;
+}
+
+.network-state {
+  composes: content;
+  height: 5.2em;
+  background-color: var(--network-state-background-color);
+}
+
+.ready-state {
+  composes: content;
+  height: 5.2em;
+  background-color: var(--ready-state-background-color);
+}
+
+.code {
+  margin: 0 0.4em;
+  font-size: var(--code-font-size);
+  font-weight: bold;
+  color: var(--code-text-color);
+}
+
+.title {
+  margin-bottom: 0.2em;
+  font-weight: bold;
+  color: var(--title-text-color);
+}
+
+.body {
+}

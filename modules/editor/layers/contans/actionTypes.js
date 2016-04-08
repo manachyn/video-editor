@@ -1,0 +1,5 @@
+export const LAYER_CREATE = 'LAYER_CREATE';
+export const LAYER_DESTROY = 'LAYER_DESTROY';
+export const LAYER_MOVE = 'LAYER_MOVE';
+export const LAYER_ADD_FILTER = 'LAYER_ADD_FILTER';
+export const LAYER_REMOVE_FILTER = 'LAYER_REMOVE_FILTER';

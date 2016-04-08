@@ -1,0 +1,20 @@
+:root {
+  --font-family: "Roboto";
+
+  --brand-info: #4cb6cb;
+  --brand-success: #1ab667;
+  --brand-warning: #fad733;
+  --brand-danger: #f05050;
+  --brand-black: #232c32;
+  --brand-light: #e8eff0;
+
+  --orange: #ad8e00;
+  --red: #993333;
+  --green: #117442;
+  --blue: #277686;
+
+  --animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-curve: var(--animation-curve-fast-out-slow-in);
+  --animation-duration: 0.35s;
+  --animation-delay: var(--animation-duration) / 5;
+}
