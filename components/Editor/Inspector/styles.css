@@ -1,0 +1,49 @@
+@import "../../variables";
+
+:root {
+  --panel-width: 100%;
+
+  --input-font-size: 1.4rem;
+  --input-background-color: color(var(--brand-black) lightness(-8%));
+  --input-text-color: color(var(--brand-light) shade(40%));
+
+  --button-background-color: color(var(--brand-black) tint(6%));
+}
+
+.panel {
+  width: var(--panel-width);
+}
+
+.panel,
+.panelHeader {
+  border-top-left-radius: 0;
+}
+
+.content,
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 2;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  height: 2em;
+}
+
+.input {
+  flex: 2;
+  padding: 1em;
+  overflow-x: hidden;
+  font-size: var(--input-font-size);
+  color: var(--input-text-color);
+  background-color: var(--input-background-color);
+}
+
+.button {
+  background-color: var(--button-background-color);
+}

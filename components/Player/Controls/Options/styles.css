@@ -1,0 +1,40 @@
+@import "../../../variables";
+
+:root {
+  --button-on-text-color: var(--brand-light);
+  --button-off-text-color: #000;
+
+  --button-debug-background: color(var(--brand-danger) w(+5%));
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.button {
+}
+
+.buttonOn {
+  composes: button;
+  color: var(--button-on-text-color);
+}
+
+.buttonOff {
+  composes: button;
+  color: var(--button-off-text-color);
+}
+
+.buttonFullScreen {
+  composes: button;
+}
+
+.buttonDebug {
+  background-color: var(--button-debug-background);
+
+  &:hover {
+    color: var(--button-on-text-color);
+    background-color: color(var(--button-debug-background) tint(12%));
+  }
+}

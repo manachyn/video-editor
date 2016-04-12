@@ -1,0 +1,51 @@
+@import "../../../variables";
+
+:root {
+  --filter-padding: 1em;
+  --filter-width: 4.854em;
+  --filter-height: 3em;
+  --filter-border-radius: 2px;
+  --filter-background-color: color(var(--brand-black) shade(20%));
+  --filter-text-color: color(var(--brand-light) shade(10%));
+  --filter-border-color: color(var(--brand-light) a(60%));
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: var(--filter-padding);
+  background-color: var(--filter-background-color);
+  border: 1px solid var(--filter-border-color);
+  user-select: none;
+  box-shadow:
+    0 2px 2px 0 rgba(#000, 0.14),
+    0 2px 1px -2px rgba(#000, 0.2),
+    0 1px 2px 0 rgba(#000, 0.12);
+  border-radius: var(--filter-border-radius);
+  width: var(--filter-width);
+  height: var(--filter-height);
+
+  &:hover {
+    background-color: color(var(--filter-background-color) shade(10%));
+    opacity: 0.8;
+  }
+}
+
+.normal {
+  cursor: grab;
+}
+
+.dragging {
+  cursor: move;
+}
+
+.title {
+  margin: 0;
+  color: var(--filter-text-color);
+  text-align: center;
+  text-decoration: uppercase;
+  text-shadow: 0 1px 1px rgba(#000, 0.5);
+}

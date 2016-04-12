@@ -1,0 +1,11 @@
+.playback {
+  flex: 1;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.button {
+  height: 100%;
+}

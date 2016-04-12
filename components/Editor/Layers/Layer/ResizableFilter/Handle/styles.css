@@ -1,0 +1,35 @@
+@import "../../../../../variables";
+
+:root {
+  --handle-width: 4px;
+  --handle-background: color(var(--brand-black) a(50%));
+  --handle-border-color: color(var(--brand-light) a(50%));
+  --handle-border-radius: 2px;
+}
+
+.handle {
+  position: relative;
+  width: var(--handle-width);
+  min-height: 100%;
+  background-color: var(--handle-background);
+  cursor: col-resize;
+  z-index: 10;
+  border: 1px solid var(--handle-border-color);
+
+  &:hover {
+    border-color: color(var(--handle-border-color) a(60%));
+    background-color: color(var(--handle-background) lightness(+10%) a(80%));
+  }
+}
+
+.left {
+  border-radius:
+    var(--handle-border-radius) 0
+    0 var(--handle-border-radius);
+}
+
+.right {
+  border-radius:
+    0 var(--handle-border-radius)
+    var(--handle-border-radius) 0;
+}

@@ -1,0 +1,105 @@
+@import "../../variables";
+
+:root {
+  --border-radius: 2px;
+
+  --container-background: var(--brand-black);
+
+  --fill-color-base: var(--brand-info);
+  --fill-color: color(var(--fill-color-base) a(30%));
+  --fill-background: linear-gradient(to bottom, var(--fill-color) 0, color(var(--fill-color) shade(30%)) 100%);
+
+  --track-bg: color(var(--container-background) shade(40%));
+  --track-background:
+    repeating-linear-gradient(
+      135deg,
+      var(--track-bg) 0,
+      var(--track-bg) 0.5em,
+      color(var(--track-bg) shade(20%)) 0.5em,
+      color(var(--track-bg) shade(20%)) 1.25em
+    );
+
+  --thumb-width: 3.4rem;
+  --thumb-height: 3rem;
+  --thumb-bg: color(#232c32 tint(6%));
+  --thumb-notch-bg: color(var(--thumb-bg) shade(30%));
+  --thumb-background:
+    repeating-linear-gradient(
+      90deg,
+      var(--thumb-notch-bg) 0,
+      var(--thumb-notch-bg) 1px,
+      var(--thumb-notch-bg) 1px,
+      var(--thumb-notch-bg) 2px,
+      transparent 2px,
+      transparent 4px
+    ) 50% no-repeat;
+  --thumb-background-size: 10px 8px;
+}
+
+.seek-bar {
+  background: var(--container-background);
+  box-shadow: inset 0 0 2px 1px rgba(#000, 0.2);
+}
+
+.slider {
+}
+
+.slider::-webkit-slider-runnable-track {
+  appearance: none;
+  background: var(--track-background);
+  z-index: 3;
+  box-shadow:
+    0 1px rgba(var(--brand-light), 0.08),
+    inset 0 0 2px 1px rgba(#000, 0.5);
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  position: relative;
+  width: var(--thumb-width);
+  height: var(--thumb-height);
+  border: 1px solid color(var(--thumb-bg) tint(4%));
+  border-radius: var(--border-radius);
+  background: var(--thumb-background);
+  background-color: var(--thumb-bg);
+  background-size: var(--thumb-background-size);
+  box-shadow:
+    1px 1px 1px rgba(#000, 0.2),
+    0 0 1px #0d0d0d;
+
+  &:hover {
+    background-color: color(var(--thumb-bg) tint(20%));
+  }
+}
+
+.normal {
+  composes: slider;
+
+  &::-webkit-slider-thumb {
+    cursor: ew-resize;
+  }
+}
+
+.disabled {
+  composes: slider;
+
+  &::-webkit-slider-thumb {
+    cursor: not-allowed;
+  }
+}
+
+.fill {
+  border-radius: 0 2px 2px 0;
+  background: var(--fill-background);
+}
+
+.marker {
+  position: relative;
+  bottom: 170%;
+  width: 4em;
+  margin-left: -2.2em;
+  text-align: center;
+  background-color: rgba(#000, 0.8);
+  padding: 0.2em 0.4em;
+  border-radius: var(--border-radius);
+}

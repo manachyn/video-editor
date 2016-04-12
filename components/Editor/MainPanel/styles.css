@@ -1,0 +1,11 @@
+@import "../../variables";
+
+:root {
+  --main-panel-background-color: var(--brand-black);
+}
+
+.mainPanel {
+  position: relative;
+  padding: 0.4em 0;
+  background-color: var(--main-panel-background-color);
+}

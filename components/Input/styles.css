@@ -1,0 +1,141 @@
+@import "../variables";
+
+:root {
+  --container-padding: 0.42em;
+
+  --input-padding: 0.125em;
+  --input-font-family: var(--font-family);
+  --input-font-size: 1.2rem;
+  --input-border-bottom-color: color(var(--brand-black) tint(20%) a(12%));
+  --input-error-border-bottom-color: color(var(--brand-danger) tint(20%) a(22%));
+
+  --input-background: transparent;
+  --input-text-color: var(--brand-light);
+
+  --icon-size: 1em;
+  --icon-font-size: 2.4rem;
+  --icon-color: color(var(--brand-black) tint(10%));
+
+  --label-top: calc(var(--container-padding) + (1.5 * var(--input-padding)));
+  --label-font-size: 1.15rem;
+  --label-font-weight: 200;
+  --label-text-color: color(var(--brand-light) a(26%));
+
+  --underline-font-size: 1.125rem;
+  --underline-font-weight: 200;
+
+  --error-padding: 0.1em;
+  --error-text-color: var(--brand-danger);
+
+  --counter-text-color: var(--label-text-color);
+}
+
+.container {
+  position: relative;
+  box-sizing: border-box;
+  padding: var(--container-padding) 0;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: var(--input-padding) 0;
+  box-sizing: border-box;
+  appearance: none;
+  overflow: auto;
+  border: 0;
+  border-bottom: 1px solid var(--input-border-bottom-color);
+  outline: none;
+  font-family: var(--input-font-family);
+  font-size: var(--input-font-size);
+  background-color: var(--input-background);
+  color: var(--input-text-color);
+  resize: none;
+}
+
+/* error state */
+
+.regular {
+}
+
+.error {
+
+  .input {
+    border-bottom-color: var(--input-error-border-bottom-color);
+  }
+}
+
+/* state */
+
+.enabled {
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+/* appearance */
+
+.floating {
+}
+
+.static {
+}
+
+/* sizes */
+
+.normal {
+}
+
+.small {
+}
+
+.big {
+}
+
+/* nested */
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.label {
+  position: absolute;
+  top: var(--label-top);
+  pointer-events: none;
+  color: var(--label-text-color);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+}
+
+.icon {
+  position: absolute;
+  display: block;
+  left: -calc(var(--icon-size) + 0.2em);
+  top: 0;
+  size: var(--icon-size);
+  font-size: var(--icon-font-size);
+  text-align: center;
+  color: var(--icon-color);
+}
+
+.underline {
+  margin-bottom: -1em;
+  font-size: var(--underline-font-size);
+  font-weight: var(--underline-font-weight);
+}
+
+.error {
+  composes: underline;
+  padding: var(--error-padding) 0;
+  color: var(--error-text-color);
+}
+
+.counter {
+  composes: underline;
+  position: absolute;
+  right: 0;
+  color: var(--counter-text-color);
+}

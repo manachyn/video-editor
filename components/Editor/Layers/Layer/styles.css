@@ -1,0 +1,15 @@
+@import "../../../variables";
+
+:root {
+  --layer-border-color: color(var(--brand-black) tint(2%));
+  --layer-height: 70px;
+}
+
+.layer {
+  display: flex;
+  margin-bottom: 0.4em;
+  width: 100%;
+  height: var(--layer-height);
+  border: 1px solid var(--layer-border-color);
+  border-radius: 4px 0 0 4px;
+}

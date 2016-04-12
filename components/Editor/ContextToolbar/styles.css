@@ -1,0 +1,29 @@
+@import "../../variables";
+
+:root {
+  --toolbar-background-color: color(var(--brand-black) lightness(-6%));
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.4em;
+  z-index: 20;
+}
+
+.neutral {
+}
+
+.filled {
+  background-color: var(--toolbar-background-color);
+}
+
+.toolbarGroup {
+  margin-left: 1em;
+
+  &:first-child {
+    margin: 0 1.6em;
+  }
+}

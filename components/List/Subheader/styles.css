@@ -1,0 +1,13 @@
+@import "../../variables";
+
+:root {
+  --subheader-text-color: color(var(--brand-light) shade(8%));
+}
+
+.subheader {
+  padding: 1em 0 0.5em 1.6em;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: var(--subheader-text-color);
+  text-shadow: 0 1px 1px rgba(#000, 0.6);
+}

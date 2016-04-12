@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import clamp from 'lodash/clamp';
+import { compose } from 'redux';
 import css from 'react-css-modules';
+import { HotKeys } from 'react-hotkeys';
 
 import {
     videoProps,
@@ -8,15 +11,47 @@ import {
     playerActionsShape,
 } from '../propTypes';
 
+import hoverable from '../Hoverable';
 import HUD from './HUD';
-//import Info from './Info';
-//import SeekBar from './SeekBar';
+import Info from './Info';
+import SeekBar from './SeekBar';
 import Overlay from './Overlay';
-//import Controls from './Controls';
+import Controls from './Controls';
 
 import styles from './styles.css';
 
+const vimKeyMap = {
+  rewind10: 'h',
+  forward10: 'l',
+  rewind30: 'ctrl+h',
+  forward30: 'ctrl+l',
+  decreasePlaybackRate: 'shift+h',
+  increasePlaybackRate: 'shift+l',
+  togglePlay: 'p',
+};
+
 export class Player extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.handleDecreasePlaybackRate = this.handleDecreasePlaybackRate.bind(this);
+    this.handleIncreasePlaybackRate = this.handleIncreasePlaybackRate.bind(this);
+  }
+
+  setPlaybackRate(factor) {
+    const { video, api, playbackRate: { min, max, step } } = this.props;
+    const value = clamp(video.playbackRate + step * factor, min, max);
+    api.setPlaybackRate(value);
+  }
+
+  handleDecreasePlaybackRate() {
+    this.setPlaybackRate(-1);
+  }
+
+  handleIncreasePlaybackRate() {
+    this.setPlaybackRate(+1);
+  }
 
   renderContainer() {
     if (!React.Children.count) return null;
@@ -34,8 +69,41 @@ export class Player extends Component {
   }
 
   render() {
+    const { className, width, height, actions, api, video, hovered } = this.props;
+    const keyboardHandlers = {
+      togglePlay: api.togglePlay,
+      decreasePlaybackRate: this.handleDecreasePlaybackRate,
+      increasePlaybackRate: this.handleIncreasePlaybackRate,
+    };
+
     return (
-        this.renderContainer()
+        <HotKeys tabIndex={0}
+          keyMap={vimKeyMap}
+          handlers={keyboardHandlers}
+          className={className}
+          styleName="player"
+          style={{ width, height }}
+        >
+          {this.renderContainer()}
+          <SeekBar {...video}
+            disabled={Boolean(video.error)}
+            step={1}
+            onSeek={api.seek}
+          />
+          <Info />
+          <Controls {...video}
+            error={Boolean(video.error)}
+            visible={hovered}
+            onToggleDebugMonitor={actions.toggleDebugMonitor}
+            onVolumeChange={api.setVolume}
+            onTogglePlay={api.togglePlay}
+            onToggleMute={api.toggleMute}
+            onToggleLoop={api.toggleLoop}
+            onToggleFullScreen={api.toggleFullScreen}
+            onDecreasePlaybackRate={this.handleDecreasePlaybackRate}
+            onIncreasePlaybackRate={this.handleIncreasePlaybackRate}
+          />
+        </HotKeys>
     );
   }
 }
@@ -65,5 +133,7 @@ Player.defaultProps = {
   },
 };
 
-//export default css(Player, styles);
-export default Player;
+export default compose(
+    hoverable,
+    css(styles, { allowMultiple: true })
+)(Player);

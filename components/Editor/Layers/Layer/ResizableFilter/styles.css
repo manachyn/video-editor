@@ -1,0 +1,15 @@
+.filter {
+  display: flex;
+
+  .handle {
+    opacity: 1;
+    transition: opacity 0.2s linear;
+  }
+
+  &:hover {
+
+    & > .handle {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import "../../../variables";
+
+:root {
+}
+
+.panel {
+  width: 100%;
+}
+
+.content {
+  position: relative;
+  padding: 0;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.zoomSlider {
+}

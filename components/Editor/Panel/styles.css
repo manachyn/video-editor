@@ -1,0 +1,46 @@
+@import "../../variables";
+
+:root {
+  --panel-border-radius: 0.2em;
+
+  --header-padding: 0.4em;
+  --header-border-color: color(var(--brand-black) shade(20%));
+  --header-text-color: color(var(--brand-light) shade(20%));
+
+  --title-font-size: 1.2rem;
+}
+
+.panel {
+  border-radius: var(--panel-border-radius) var(--panel-border-radius) 0 0;
+
+  &.collapsed {
+    width: 7em;
+  }
+}
+
+.header {
+  padding: var(--header-padding) 0;
+  background-color: var(--header-border-color);
+  border-radius: var(--panel-border-radius) var(--panel-border-radius) 0 0;
+  border-bottom: 1px solid var(--header-border-color);
+  text-align: center;
+
+  &.collapsed {
+  }
+}
+
+.content {
+  padding: 0;
+}
+
+.title {
+  flex: 2;
+  margin: 0;
+  color: var(--header-text-color);
+  font-size: var(--title-font-size);
+  text-transform: uppercase;
+  text-shadow: 0 2px 1px rgba(#000, 0.6);
+}
+
+.buttonToggleExpanded {
+}

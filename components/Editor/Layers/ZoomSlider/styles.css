@@ -1,0 +1,25 @@
+@import "../../../variables";
+
+:root {
+  --zoom-slider-background-color: var(--brand-black);
+}
+
+.zoom-slider {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 8em;
+  background-color: var(--zoom-slider-background-color);
+}
+
+.button {
+  width: 2em;
+}
+
+.slider {
+  width: 5em;
+}
+
+.sliderBar {
+}

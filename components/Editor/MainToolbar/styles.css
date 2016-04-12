@@ -1,0 +1,6 @@
+@import "../../variables";
+
+.buttonAddFilter {
+  width: 5.6em;
+  background-color: color(var(--brand-black) lightness(+5%));
+}

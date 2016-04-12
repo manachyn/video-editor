@@ -1,0 +1,10 @@
+.draggable-filter {
+}
+
+.normal {
+  composes: draggable-filter;
+}
+
+.dragging {
+  composes: draggable-filter;
+}

@@ -1,0 +1,13 @@
+@import "../../../../../variables";
+
+:root {
+}
+
+.controls {
+  flex: 1;
+  justify-content: center;
+}
+
+.button {
+  width: 1.4em;
+}

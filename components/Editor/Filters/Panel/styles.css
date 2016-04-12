@@ -1,0 +1,37 @@
+@import "../../../variables";
+
+:root {
+  --container-background-color: var(--brand-black);
+  --list-item-margin: 0.2em;
+
+  --content-width: 7em;
+  --content-height: 20em;
+}
+
+.container {
+  display: flex;
+  background-color: var(--container-background-color);
+}
+
+.panel,
+.panelHeader {
+  border-top-right-radius: 0;
+}
+
+.panelContent {
+  min-width: var(--content-width);
+  width: var(--content-width);
+  height: var(--content-height);
+  padding: 1em;
+  overflow: auto;
+}
+
+.list {
+  flex-wrap: wrap;
+  align-items: center;
+  align-center: center;
+  justify-content: center;
+  flex: 2;
+}
+
+.item { margin: var(--list-item-margin); }

@@ -1,0 +1,15 @@
+@import "../../variables";
+
+:root {
+  --property-editor-panel-width: 17em;
+}
+
+.panel {
+  width: var(--property-editor-panel-width);
+  padding: 0.2em 0;
+}
+
+.panel,
+.panelHeader {
+  border-top-left-radius: 0;
+}

@@ -1,0 +1,5 @@
+.indicator {
+  user-select: none;
+  font-size: 0.8rem;
+  cursor: pointer;
+}

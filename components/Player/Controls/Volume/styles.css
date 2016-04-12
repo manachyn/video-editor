@@ -1,0 +1,42 @@
+@import "../../../variables";
+
+:root {
+  --container-background: rgba(var(--brand-black), 0.8);
+
+  --fill-color: color(var(--brand-light) shade(20%));
+  --fill-background: linear-gradient(to bottom, var(--fill-color) 0, color(var(--fill-color) shade(20%)) 100%);
+}
+
+.volume {
+  display: flex;
+  height: 100%;
+  z-index: 12;
+}
+
+.toggleButton {
+}
+
+.container {
+  position: relative;
+}
+
+.box {
+  position: absolute;
+  bottom: 2em;
+  right: 1rem;
+  background: var(--container-background);
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 0 2px 1px rgba(#000, 0.2);
+}
+
+.fill {
+  background: var(--fill-background);
+  border-radius: 2px 2px 0 0;
+}
+
+.marker {
+  right: 140%;
+  background-color: rgba(#000, 0.8);
+  padding: 0.2rem 0.4rem;
+  border-radius: 2px;
+}

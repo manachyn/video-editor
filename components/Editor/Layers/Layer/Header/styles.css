@@ -1,0 +1,43 @@
+@import "../../../../variables";
+
+:root {
+  --header-wide-width: 7em;
+
+  --header-background-color: color(var(--brand-black) lightness(+2%));
+  --header-background:
+    linear-gradient(
+      to bottom,
+      var(--header-background-color) 0,
+      color(var(--header-background-color) shade(12%)) 46%,
+      color(var(--header-background-color) shade(20%)) 100%
+    );
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.25em 0.4em;
+  background-color: var(--header-background-color);
+  border-right: 1px solid var(--brand-black);
+  box-sizing: border-box;
+}
+
+.title {
+  font-family: var(--font-family);
+  text-align: center;
+  margin: 0.4em 0;
+  user-select: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.wide {
+  min-width: var(--header-wide-width);
+  width: var(--header-wide-width);
+}
+
+.narrow {
+}

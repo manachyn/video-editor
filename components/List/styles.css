@@ -1,0 +1,30 @@
+@import "../variables";
+
+:root {
+  --list-text-color: var(--brand-light);
+}
+
+.list {
+  display: flex;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--list-text-color);
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.horizontal {
+  flex-direction: row;
+}
+
+.normal {
+  composes: list;
+}
+
+.selectable {
+  composes: list;
+}

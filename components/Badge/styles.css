@@ -1,0 +1,46 @@
+@import "../variables";
+
+:root {
+  --badge-text-color: var(--brand-light);
+  --badge-border-radius: 0.2em;
+  --badge-font-size: 1rem;
+  --badge-padding: 0.4em;
+}
+
+.badge {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: baseline;
+  padding: var(--badge-padding);
+  font-size: var(--badge-font-size);
+  font-weight: bold;
+  color: var(--badge-text-color);
+}
+
+.neutral {
+}
+
+.filled {
+  border-radius: var(--badge-border-radius);
+}
+
+.success {
+  composes: filled;
+  background-color: var(--brand-success);
+}
+
+.info {
+  composes: filled;
+  background-color: var(--brand-info);
+}
+
+.warning {
+  composes: filled;
+  background-color: var(--brand-warning);
+  color: #111;
+}
+
+.error {
+  composes: filled;
+  background-color: var(--brand-danger);
+}

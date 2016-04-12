@@ -1,0 +1,22 @@
+@import "../../variables";
+
+:root {
+  --footer-background-color: var(--brand-black);
+  --footer-background:
+    linear-gradient(
+      to bottom,
+      var(--footer-background-color) 0,
+      color(var(--footer-background-color) shade(30%)) 100%
+    );
+
+  --footer-border-color: color(var(--brand-black) lightness(+3%));
+  --footer-text-color: var(--brand-light);
+}
+
+.footer {
+  padding: 0.2em 0.4em;
+  box-sizing: border-box;
+  background-color: var(--footer-background-color);
+  border-top: 1px solid var(--footer-border-color);
+  color: var(--footer-text-color);
+}

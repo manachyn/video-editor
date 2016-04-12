@@ -1,0 +1,14 @@
+@import "../../variables";
+
+:root {
+  --content-background: color(var(--brand-black) shade(8%));
+  --content-text-color: var(--brand-light);
+}
+
+.content {
+  flex: 2;
+  padding: 0.2em 0.4em;
+  box-sizing: border-box;
+  background: var(--content-background);
+  color: var(--content-text-color);
+}

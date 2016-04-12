@@ -1,0 +1,12 @@
+:root {
+  --button-width: 1.2em;
+}
+
+.filter-controls {
+  flex: 1;
+  align-self: flex-end;
+}
+
+.filterButton {
+  width: var(--button-width);
+}

@@ -1,0 +1,23 @@
+@import "../../variables";
+
+:root {
+  --header-background-color: var(--brand-black);
+  --header-background:
+    linear-gradient(
+      to bottom,
+      var(--header-background-color) 0,
+      color(var(--header-background-color) shade(30%)) 100%
+    );
+
+  --header-text-color: var(--brand-light);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  user-select: none;
+  background-color: var(--header-background-color);
+  color: var(--header-text-color);
+}

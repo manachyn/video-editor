@@ -54,7 +54,7 @@ export const layersSelector = createSelector(
             .map(({ filters, ...layer }) => ({
               ...layer,
               ...layerTypes[layer.type],
-              filters: pick(filtersSource, filters)
+              filters: pick(filtersSource, filters),
             }))
 );
 
@@ -64,6 +64,6 @@ export default createSelector(
     ({ layerTypes, ...editor }, layers) => ({
       ...editor,
       layerTypes,
-      layers
+      layers,
     })
 );

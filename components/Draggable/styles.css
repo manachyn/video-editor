@@ -1,0 +1,14 @@
+.draggable {
+}
+
+.normal {
+  composes: draggable;
+  height: auto;
+  opacity: 1;
+}
+
+.dragging {
+  composes: draggable;
+  height: 0;
+  opacity: 0;
+}

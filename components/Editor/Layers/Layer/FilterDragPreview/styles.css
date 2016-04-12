@@ -1,0 +1,52 @@
+@import "../../../../variables";
+
+:root {
+  --filter-height: 70px;
+  --filter-drag-preview-background-color: color(var(--brand-success) lightness(-20%));
+  --filter-text-color: var(--brand-light);
+  --filter-font-size: 1rem;
+  --filter-border-color: color(var(--brand-light) a(50%));
+  --filter-border-radius: 2px;
+
+  --tick-background-color: var(--filter-drag-preview-background-color);
+  --tock-background-color: color(var(--tick-background-color) lightness(-10%));
+}
+
+.filter-drag-preview {
+  display: flex;
+  flex-direction: column;
+  height: var(--filter-height);
+  overflow: hidden;
+  padding: 0.2em 0.4em;
+  box-sizing: border-box;
+  border-radius: var(--filter-border-radius);
+  border: 1px solid var(--filter-border-color);
+}
+
+.visible {
+}
+
+.hidden {
+  border-style: dashed;
+}
+
+.title {
+  flex: 2;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--font-family);
+  font-size: var(--filter-font-size);
+  font-weight: normal;
+  color: var(--filter-text-color);
+}
+
+.tick {
+  background-color: var(--tick-background-color);
+  opacity: 1;
+}
+
+.tock {
+  background-color: var(--tock-background-color);
+  opacity: 0.8;
+}

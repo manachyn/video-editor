@@ -1,0 +1,65 @@
+@import "../../../variables";
+
+:root {
+  --container-background: var(--brand-black);
+
+  --progress-height: 1.4rem;
+  --progress-bg: color(var(--container-background) shade(24%));
+  --progress-bg-alt: color(var(--container-background) shade(40%));
+  --progress-background:
+    repeating-linear-gradient(
+      90deg,
+      var(--progress-bg) 0,
+      var(--progress-bg) 0.1em,
+      transparent 0.1em,
+      transparent 2em
+    ) 50% repeat-x,
+    repeating-linear-gradient(
+      90deg,
+      var(--progress-bg-alt) 1em,
+      var(--progress-bg-alt) 1.05em,
+      transparent 1.05em,
+      transparent 2em
+    ) 50% repeat-x;
+  --progress-background-size: 1em 0.5em, 2em 0.325em;
+  --progress-background-position: right 50% top 0;
+
+  --current-time-bar-color-base: var(--brand-light);
+  --current-time-bar-color: color(var(--current-time-bar-color-base) tint(20%));
+  --current-time-bar-background:
+    linear-gradient(
+      to bottom,
+      var(--current-time-bar-color) 0,
+      color(var(--current-time-bar-color) shade(30%)) 100%
+    );
+
+  --buffered-time-bar-color-base: var(--brand-success);
+  --buffered-time-bar-color: color(var(--buffered-time-bar-color-base) a(20%));
+  --buffered-time-bar-background:
+    linear-gradient(
+      to bottom,
+      var(--buffered-time-bar-color) 0,
+      color(var(--buffered-time-bar-color) shade(20%)) 100%
+    );
+}
+
+.progress {
+  position: relative;
+  height: var(--progress-height);
+  background: var(--progress-background);
+  background-size: var(--progress-background-size);
+  background-position: var(--progress-background-position);
+}
+
+.current {
+  position: absolute 0 0 0.8em 0;
+  height: 0.2em;
+  z-index: 4;
+  background: var(--current-time-bar-background);
+}
+
+.buffered {
+  position: absolute 0;
+  background: var(--buffered-time-bar-background);
+  border-radius: 0 2px 2px 0;
+}

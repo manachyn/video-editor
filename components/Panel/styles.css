@@ -1,0 +1,18 @@
+@import "../variables";
+
+:root {
+}
+
+.panel {
+  display: flex;
+}
+
+.horizontal { flex-direction: column; }
+.vertical { flex-direction: row; }
+
+.neutral {
+}
+
+.filled {
+  background-color: var(--brand-black);
+}

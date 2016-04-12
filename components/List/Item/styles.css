@@ -1,0 +1,51 @@
+@import "../../variables";
+
+:root {
+  --item-background: var(--brand-black);
+  --item-text-color: var(--brand-light);
+
+  --item-hover-background-color: color(var(--item-background-color) shade(40%));
+  --item-hover-background: color(var(--item-background) tint(5%));
+
+  --item-disabled-background: color(var(--item-background) a(5%));
+  --item-disabled-filled-text-color: color(var(--item-text-color) a(10%));
+  --item-disabled-neutral-text-color: color(var(--item-text-color) a(60%));
+}
+
+.list-item {
+  display: flex;
+}
+
+.normal {
+}
+
+.selectable {
+  cursor: pointer;
+  user-select: none;
+
+  &:hover { color: color(var(--item-text-color) shade(50%)); }
+}
+
+.enabled {
+  color: var(--item-text-color);
+}
+
+.neutral {
+}
+
+.filled {
+  background-color: var(--item-background);
+
+  &:hover { background-color: var(--item-hover-background); }
+}
+
+.disabled.filled {
+  background-color: var(--item-disabled-background);
+  color: var(--item-disabled-filled-text-color);
+  opacity: 0.5;
+}
+
+.disabled {
+  pointer-events: none;
+  color: var(--item-disabled-neutral-text-color);
+}
