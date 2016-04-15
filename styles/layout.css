@@ -1,0 +1,11 @@
+@import "media";
+
+.box {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  min-width: 100vw;
+  min-height: 100vh;
+}

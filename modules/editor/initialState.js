@@ -19,7 +19,7 @@ const layerTypes = {
 const filterTypeDefaults = {
   timeline: {
     offset: 0,
-    duration: 40,
+    duration: 3,
   },
 };
 

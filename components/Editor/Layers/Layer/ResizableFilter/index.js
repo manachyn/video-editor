@@ -30,6 +30,13 @@ export class ResizableFilter extends Component {
     }
   }
 
+  handleResizing(delta, factor) {
+    const x = this.state.x + (factor > 0 ? 0 : delta);
+    const width = this.state.width + factor * delta;
+
+    this.setState({ x, width });
+  }
+
   handleResized(delta, factor) {
     this.props.onResize(
         this.props.id,

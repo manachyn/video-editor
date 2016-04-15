@@ -1,0 +1,39 @@
+@import "variables";
+
+html {
+  text-rendering: optimizeLegibility;
+  font-smoothing: antialiased;
+}
+
+html,
+body {
+  font-size: var(--font-size);
+  lower-font-range: 22.5rem;
+  upper-font-range: 85.375rem;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-color);
+}
+
+section {
+  & > h1 {
+    font-weight: 100;
+    font-size: responsive 3rem 4rem;
+  }
+}
+
+a {
+  color: var(--link-color);
+  &:hover { color: var(--link-hover-color); }
+}

@@ -32,3 +32,6 @@ export default PaymentsTable;
 redux compose
 
 lodash flow
+
+webpack --profile --json > stats.json
+http://webpack.github.io/analyse/

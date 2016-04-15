@@ -15,11 +15,7 @@ import styles from './styles';
 const { bool, number, string, func } = PropTypes;
 
 export const DraggableFilter = props => {
-  const {
-      onDestroy,
-      onToggleVisibility,
-      onToggleLocked,
-      } = props;
+  const { onDestroy, onToggleVisibility, onToggleLocked } = props;
 
   return (
       <Filter { ...{
@@ -28,7 +24,7 @@ export const DraggableFilter = props => {
           onToggleVisibility,
           onToggleLocked,
         },
-        ...pick(this.props, dragSourceProps),
+        ...pick(props, dragSourceProps),
       } }
       />
   );

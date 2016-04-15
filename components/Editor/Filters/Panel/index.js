@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import List from '../../../List';
 
-import Panel from '../../../Panel';
+import Panel from '../../Panel';
 
 // import SearchBar from '../SearchBar';
 import DraggableFilter from '../DraggableFilter';

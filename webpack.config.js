@@ -42,7 +42,7 @@ module.exports = {
         test: /\.css$/,
         loaders: [
           'style?sourceMap',
-          'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'css?modules&importLoaders=1&localIdentName=[name]-[local]--[hash:base64:5]',
           'postcss-loader'
         ]
       },
@@ -62,15 +62,23 @@ module.exports = {
   postcss: [
     require('postcss-import')({
       addDependencyTo: webpack,
+      path: [
+        'modules',
+        'styles'
+      ]
     }),
+    require('postcss-custom-media'),
     require('precss'),
     require('postcss-cssnext')({
       sourcemap: true,
       messages: {
         browser: true,
-        console: true,
-      },
+        console: true
+      }
     }),
+    require('lost'),
+    //require('postcss-assets')(assets),
+    //require('postcss-font-magician')(fontMagician),
     require('postcss-size'),
     require('postcss-position'),
     require('postcss-easings'),
@@ -78,12 +86,15 @@ module.exports = {
     require('postcss-color-rgba-fallback'),
     require('postcss-input-style'),
     require('postcss-quantity-queries'),
-
-    ...(process.env.NODE_ENV === 'production' ? require('cssnano') : []),
-
-    require('postcss-reporter'),
-    require('postcss-browser-reporter')({
-      selector: 'body:before',
+    require('postcss-responsive-type')({
+      minSize: '1rem',
+      maxSize: '2rem',
+      minWidth: '22.5rem',
+      maxWidth: '85.375rem',
+      rootSize: '1rem'
     }),
+    ...(process.env.NODE_ENV === 'production' ? require('cssnano') : []),
+    require('postcss-reporter'),
+    require('postcss-browser-reporter')
   ]
 };

@@ -1,7 +1,10 @@
 import * as types from '../constans/actionTypes';
 
-export function load() {
-  return { type: types.EDITOR_LOAD };
+export function load(state) {
+  return {
+    type: types.EDITOR_LOAD,
+    payload: state,
+  };
 }
 
 export function update(currentTime) {

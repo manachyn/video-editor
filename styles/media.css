@@ -1,0 +1,9 @@
+/*
+ * font-size rule has no effect with regards to media queries,
+ * and 1em is still 16px, not 10px.
+ */
+
+@custom-media --small (width >= 22.5rem) and (height >= 30rem);
+@custom-media --medium (width >= 48rem) and (height >= 40rem);
+@custom-media --large (width >= 64rem);
+@custom-media --desktop (width >= 85.375rem);

@@ -1,0 +1,14 @@
+:root {
+  --font-family: "Roboto";
+
+  /* 1em = 10px */
+  --font-size: 62.5%;
+  --font-size-base: 1.8rem;
+
+  --background: #f2f4f8;
+  --text-color: #788188;
+  --text-muted: color(var(--text-color) tint(10%));
+
+  --link-color: #4cb6cb;
+  --link-hover-color: color(var(--link-color) tint(15%));
+}

@@ -1,0 +1,21 @@
+@import "variables";
+
+:root {
+  --background: #f05050;
+  --text-color: #e8eff0;
+}
+
+.error {
+  background-color: var(--background);
+  color: var(--text-color);
+}
+
+.stack-frames {
+  list-style: none;
+}
+
+.stack-frame {
+}
+
+.context {
+}

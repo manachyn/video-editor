@@ -18,11 +18,11 @@ import * as playerActions from '../../modules/player/actions';
 import * as editorActions from '../../modules/editor/actions';
 
 import {
-    videoProps,
-    videoActionsShape,
-    playerActionsShape,
-    filterTypeShape,
-    layerShape,
+  videoProps,
+  videoActionsShape,
+  playerActionsShape,
+  filterTypeShape,
+  layerShape,
 } from '../propTypes';
 
 import Player from '../Player';
@@ -38,11 +38,11 @@ import PropertyEditor from './PropertyEditor';
 import Inspector from './Inspector';
 
 import {
-    Blur,
-    Hue,
-    Negative,
-    CSB,
-    ColorMatrix,
+  Blur,
+  Hue,
+  Negative,
+  CSB,
+  ColorMatrix,
 } from './FilterRenderer/renderers';
 
 const FilterRenderer = require('./FilterRenderer').default;
@@ -50,13 +50,13 @@ const FilterRenderer = require('./FilterRenderer').default;
 import styles from './styles';
 
 const {
-    bool,
-    number,
-    string,
-    object,
-    arrayOf,
-    shape,
-    } = PropTypes;
+  bool,
+  number,
+  string,
+  object,
+  arrayOf,
+  shape,
+} = PropTypes;
 
 const filterGroups = {
   behavioral: ['cut'],
@@ -141,28 +141,28 @@ export class Editor extends Component {
     const { video, source, actions } = this.props;
 
     return (
-        <Html5Video ref={r => (this.video = r)}
-                    preload="auto"
-                    src={source}
-                    onTimeUpdate={this.refresh}
-                    actions={actions.video}
-            { ...{ ...size, ...video } }
-        />
+      <Html5Video ref={r => (this.video = r)}
+        preload="auto"
+        src={source}
+        onTimeUpdate={this.refresh}
+        actions={actions.video}
+        { ...{ ...size, ...video } }
+      />
     );
   }
 
   renderPlayer() {
     const {
-        filters,
-        actions,
-        video,
-        player: {
-            width,
-            height,
-            ...player,
-            },
-        activeFilters,
-        } = this.props;
+      filters,
+      actions,
+      video,
+      player: {
+        width,
+        height,
+        ...player,
+      },
+      activeFilters,
+    } = this.props;
 
     const size = { width, height };
     const playerProps = {
@@ -174,41 +174,41 @@ export class Editor extends Component {
     };
 
     const presentationalFilters = Object.values(filters)
-        .filter(({ id, type }) =>
-            filterGroups.presentational.indexOf(type) !== -1 &&
-            activeFilters.indexOf(id) !== -1
-        );
+      .filter(({ id, type }) =>
+        filterGroups.presentational.indexOf(type) !== -1 &&
+        activeFilters.indexOf(id) !== -1
+      );
 
     const videoEl = this.renderVideo(size);
 
     return (
-        <Player {...playerProps}>
-          {FilterRenderer ?
-              <FilterRenderer {...size}
-                  renderers={filterRenderers}
-                  filters={presentationalFilters}
-              >
-                {videoEl}
-              </FilterRenderer> :
-              videoEl
-          }
-        </Player>
+      <Player {...playerProps}>
+        {FilterRenderer ?
+          <FilterRenderer {...size}
+            renderers={filterRenderers}
+            filters={presentationalFilters}
+          >
+            {videoEl}
+          </FilterRenderer> :
+          videoEl
+        }
+      </Player>
     );
   }
 
   render() {
     const {
-        className,
-        filterTypes,
-        video,
-        layers,
-        actions,
-        } = this.props;
+      className,
+      filterTypes,
+      video,
+      layers,
+      actions,
+    } = this.props;
 
     const {
-        snapToGrid,
-        cellSize,
-        } = this.state;
+      snapToGrid,
+      cellSize,
+    } = this.state;
 
     const layersPanelProps = {
       snapToGrid,
@@ -219,28 +219,28 @@ export class Editor extends Component {
     };
 
     return (
-        <div styleName="editor" className={className}>
-          <div styleName="main">
-            <FiltersPanel
-                filterTypes={filterTypes}
-                onCreateFilter={actions.editor.createFilter}
-            />
-            {this.renderPlayer()}
-            <Inspector />
-          </div>
-          <MainToolbar
-              onCreateLayer={this.handleCreateLayer}
+      <div styleName="editor" className={className}>
+        <div styleName="main">
+          <FiltersPanel
+            filterTypes={filterTypes}
+            onCreateFilter={actions.editor.createFilter}
           />
-          <MainPanel>
-            <LayersPanel {...layersPanelProps}
-                actions={pick(actions, 'layer', 'filter')}
-            >
-              <Timeline {...video} onSeek={this.api.seek} />
-            </LayersPanel>
-            <PropertyEditor />
-          </MainPanel>
-          <CustomDragLayer { ...{ snapToGrid, cellSize } } />
+          {this.renderPlayer()}
+          <Inspector />
         </div>
+        <MainToolbar
+          onCreateLayer={this.handleCreateLayer}
+        />
+        <MainPanel>
+          <LayersPanel {...layersPanelProps}
+            actions={pick(actions, 'layer', 'filter')}
+          >
+            <Timeline {...video} onSeek={this.api.seek} />
+          </LayersPanel>
+          <PropertyEditor />
+        </MainPanel>
+        <CustomDragLayer { ...{ snapToGrid, cellSize } } />
+      </div>
     );
   }
 }
@@ -289,15 +289,15 @@ const actionsMap = {
 
 const selectActions = dispatch => ({
   actions: mapValues(
-      actionsMap,
-      actions => bindActionCreators(actions, dispatch)
+    actionsMap,
+    actions => bindActionCreators(actions, dispatch)
   ),
 });
 
 /* eslint-disable new-cap */
 export default flow(
-    css(styles, { allowMultiple: true }),
-    connect(selector, selectActions),
-    DragDropContext(HTML5Backend)
+  css(styles, { allowMultiple: true }),
+  connect(selector, selectActions),
+  DragDropContext(HTML5Backend)
 )(Editor);
 /* eslint-enable new-cap */
