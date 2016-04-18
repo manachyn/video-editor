@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import css from 'react-css-modules';
+import { throttle } from 'core-decorators';
 import pick from 'lodash/pick';
+import css from 'react-css-modules';
+
 import { videoProps, html5VideoProps, videoActionsShape } from '../propTypes';
 
 import styles from './styles';
@@ -148,12 +150,14 @@ export default class Html5Video extends Component {
     this.props.actions.loadStart(this.video.networkState);
   }
 
+  @throttle(1500)
   handleProgress() {
     if (!this.video.buffered.length) return;
     const bufferedTime = this.video.buffered.end(this.video.buffered.length - 1);
     this.props.actions.progress(this.video.networkState, bufferedTime);
   }
 
+  @throttle(1500)
   handleSuspend() {
     this.props.actions.suspend(this.video.networkState);
   }

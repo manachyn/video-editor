@@ -14,7 +14,7 @@ export class App extends Component {
         <div styleName="root">
           <Editor className={styles.fullscreenEditor}
             source={sources[0]}
-            player={{ width: 640, height: 480 }}
+            player={{ width: 432, height: 244 }}
           />
           {children}
         </div>

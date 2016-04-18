@@ -47,7 +47,8 @@ export function createFilter(state, action) {
   };
 }
 
-function update({ filters, ...state }, { currentTime }) {
+function update({ filters, ...state }, action) {
+  const { currentTime } = action.payload;
   const activeFilters = Object.values(filters).filter(filter => {
     const { offset, duration } = filter.timeline;
     return currentTime >= offset && currentTime < (offset + duration);
