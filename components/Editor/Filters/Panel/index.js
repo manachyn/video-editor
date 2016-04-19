@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import css from 'react-css-modules';
 import cn from 'classnames';
 
@@ -14,6 +15,11 @@ import styles from './styles';
 const { string, func, object } = PropTypes;
 
 export class FiltersPanel extends Component {
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   renderSearchBar() {
     return null;
   }

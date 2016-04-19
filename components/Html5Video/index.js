@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import { throttle } from 'core-decorators';
 import pick from 'lodash/pick';
 import css from 'react-css-modules';
@@ -66,6 +67,10 @@ export default class Html5Video extends Component {
     this.video.addEventListener('ratechange', this.handleRateChange);
     this.video.addEventListener('resize', this.handleResize);
     this.video.addEventListener('volumechange', this.handleVolumeChange);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   componentWillUnmount() {
@@ -255,8 +260,9 @@ export default class Html5Video extends Component {
     const ownProps = pick(other, Object.keys(html5VideoProps));
 
     return (
-        <video styleName='video' className={className}
-               ref={ref => this.video = ref} {...ownProps}>
+        <video styleName="video" className={className}
+          ref={ref => (this.video = ref)} {...ownProps}
+        >
           {this.props.children}
         </video>
     );

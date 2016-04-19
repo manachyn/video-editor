@@ -14,19 +14,19 @@ export const Time = ({ className, currentTime, duration }) => {
     x: spring(1),
     opacity: spring(1, {
       stiffness: 80,
-      damping: 40
-    })
+      damping: 40,
+    }),
   };
 
   return (
-    <Motion defaultStyle={{ x: 0, opacity: 0 }}
-      style={animationStyle}>{({ x, ...style }) =>
-
+    <Motion defaultStyle={{ x: 0, opacity: 0 }} style={animationStyle}>
+      {({ x, ...style }) =>
       <span className={cn(className, styles.time)} style={{
         ...style,
         WebkitTransform: `translate3d(${x}rem, 0, 0)`,
-        transform: `translate3d(${x}rem, 0, 0)`
-      }}>
+        transform: `translate3d(${x}rem, 0, 0)`,
+      }}
+      >
         {time}
       </span>
 
@@ -37,7 +37,7 @@ export const Time = ({ className, currentTime, duration }) => {
 Time.propTypes = {
   className: string,
   currentTime: number,
-  duration: number
+  duration: number,
 };
 
 export default css(Time, styles, { allowMultiple: true });

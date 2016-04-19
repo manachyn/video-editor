@@ -1,5 +1,6 @@
 import flow from 'lodash/flow';
 import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
 
@@ -29,6 +30,10 @@ export class Inspector extends Component {
     if (text !== this.state.text) {
       this.setState({ text });
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   handleChange(text) {

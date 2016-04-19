@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import clamp from 'lodash/clamp';
 import { compose } from 'redux';
 import css from 'react-css-modules';
@@ -37,6 +38,10 @@ export class Player extends Component {
 
     this.handleDecreasePlaybackRate = this.handleDecreasePlaybackRate.bind(this);
     this.handleIncreasePlaybackRate = this.handleIncreasePlaybackRate.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   setPlaybackRate(factor) {

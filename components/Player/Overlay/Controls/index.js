@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import css from 'react-css-modules';
 import cn from 'classnames';
 
@@ -9,30 +10,36 @@ import styles from './styles';
 const TooltipButton = tooltip(Button);
 const { bool, string, func } = PropTypes;
 
-const Controls = (props) => {
-  const {
-    className,
-    buttonClassName,
-    paused,
-    onTogglePlay,
-  } = props;
+export class Controls extends Component {
 
-  const playbackIcon = paused ?
-    'play_circle_filled' : 'pause';
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
-  return (
-    <div className={className} styleName="controls">
-      <TooltipButton big
-        tooltipTop
-        tooltipText={paused ? 'resume' : 'pause'}
-        tooltipDelay={1200}
-        className={cn(buttonClassName, styles.togglePlayButton)}
-        icon={playbackIcon}
-        onClick={onTogglePlay}
-      />
-    </div>
-  );
-};
+  render() {
+    const {
+      className,
+      buttonClassName,
+      paused,
+      onTogglePlay,
+    } = this.props;
+
+    const playbackIcon = paused ? 'play_circle_filled' : 'pause';
+
+    return (
+      <div className={className} styleName="controls">
+        <TooltipButton big
+          tooltipTop
+          tooltipText={paused ? 'resume' : 'pause'}
+          tooltipDelay={1200}
+          className={cn(buttonClassName, styles.togglePlayButton)}
+          icon={playbackIcon}
+          onClick={onTogglePlay}
+        />
+      </div>
+    );
+  }
+}
 
 Controls.propTypes = {
   className: string,

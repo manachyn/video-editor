@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import css from 'react-css-modules';
 
 import { videoStateShape, percentageShape } from '../../../propTypes';
@@ -6,26 +7,32 @@ import styles from './styles';
 
 const { number } = PropTypes;
 
-export const DebugMonitor = (props) => {
-  const {
-    networkState,
-    readyState,
-    currentTime,
-    duration,
-    percentage,
-  } = props;
+export class DebugMonitor extends Component {
 
-  const { buffered, played } = percentage;
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
-  return (
-    <div styleName="debug-monitor">
-      <ul styleName="playback">
-        <li><span styleName="label">Current time:</span>{currentTime}</li>
-        <li><span styleName="label">Duration:</span>{duration}</li>
-        <li><span styleName="label">Buffered:</span>{`${buffered}%`}</li>
-        <li><span styleName="label">Played:</span>{`${played}%`}</li>
-      </ul>
-      {networkState &&
+  render() {
+    const {
+      networkState,
+      readyState,
+      currentTime,
+      duration,
+      percentage,
+    } = this.props;
+
+    const { buffered, played } = percentage;
+
+    return (
+      <div styleName="debug-monitor">
+        <ul styleName="playback">
+          <li><span styleName="label">Current time:</span>{currentTime}</li>
+          <li><span styleName="label">Duration:</span>{duration}</li>
+          <li><span styleName="label">Buffered:</span>{`${buffered}%`}</li>
+          <li><span styleName="label">Played:</span>{`${played}%`}</li>
+        </ul>
+        {networkState &&
         <dl styleName="network-state">
           <dt styleName="title">
             <strong styleName="code">{networkState.code}</strong>
@@ -33,8 +40,8 @@ export const DebugMonitor = (props) => {
           </dt>
           <dd styleName="body">{networkState.body}</dd>
         </dl>
-      }
-      {readyState &&
+        }
+        {readyState &&
         <dl styleName="ready-state">
           <dt styleName="title">
             <strong styleName="code">{readyState.code}</strong>
@@ -42,10 +49,11 @@ export const DebugMonitor = (props) => {
           </dt>
           <dd styleName="body">{readyState.body}</dd>
         </dl>
-      }
-    </div>
-  );
-};
+        }
+      </div>
+    );
+  }
+}
 
 DebugMonitor.propTypes = {
   duration: number,

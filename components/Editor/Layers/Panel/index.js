@@ -1,5 +1,6 @@
 import pick from 'lodash/pick';
 import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import css from 'react-css-modules';
 import cn from 'classnames';
 
@@ -37,6 +38,10 @@ export class LayersPanel extends Component {
     this.handleZoomIn = this.handleZoomIn.bind(this);
     this.handleZoomOut = this.handleZoomOut.bind(this);
     this.renderLayer = this.renderLayer.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   handleZoom(level) {

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import css from 'react-css-modules';
 
 import { videoStateShape, percentageShape } from '../../propTypes';
@@ -10,41 +11,52 @@ import styles from './styles';
 
 const { bool, number, string, func, node } = PropTypes;
 
-export const Overlay = (props) => {
-  const {
-    className,
-    children,
-    debug,
-    loading,
-    paused,
-    error,
-    currentTime,
-    duration,
-    percentage,
-    networkState,
-    readyState,
-    onTogglePlay,
-  } = props;
+export class Overlay extends Component {
 
-  const styleName = error ? 'error' : paused ? 'faded' : 'transparent';
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
-  return (
-    <div { ...{ styleName, className } }
-      onClick={!error && onTogglePlay}>
-      {loading && !paused && <Spinner />}
-      {debug && <DebugMonitor { ...{
-        currentTime,
-        duration,
-        percentage,
-        networkState,
-        readyState,
-      } } /> }
-      {error && <ErrorBox { ...error } />}
-      {!error && paused && onTogglePlay ? <Controls { ...{ paused, onTogglePlay } } /> : null}
-      {children}
-    </div>
-  );
-};
+  render() {
+    const {
+      className,
+      children,
+      debug,
+      loading,
+      paused,
+      error,
+      currentTime,
+      duration,
+      percentage,
+      networkState,
+      readyState,
+      onTogglePlay,
+    } = this.props;
+
+    const styleName = error ? 'error' : paused ? 'faded' : 'transparent';
+
+    return (
+      <div { ...{ styleName, className } }
+        onClick={!error && onTogglePlay}
+      >
+        {loading && !paused && <Spinner />}
+        {debug &&
+          <DebugMonitor { ...{
+            currentTime,
+            duration,
+            percentage,
+            networkState,
+            readyState,
+          } }
+          />
+        }
+        {error && <ErrorBox { ...error } />}
+        {!error && paused && onTogglePlay ? <Controls { ...{ paused, onTogglePlay } } /> : null}
+        {children}
+      </div>
+    );
+  }
+}
 
 
 Overlay.propTypes = {

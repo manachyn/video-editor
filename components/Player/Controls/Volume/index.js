@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import css from 'react-css-modules';
 import cn from 'classnames';
 import { spring, presets, Motion } from 'react-motion';
@@ -20,6 +21,10 @@ export class Volume extends Component {
     this.handleVolumeChange = this.handleVolumeChange.bind(this);
     this.handleExpand = this.handleExpand.bind(this);
     this.handleCollapse = this.handleCollapse.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   handleExpand() {

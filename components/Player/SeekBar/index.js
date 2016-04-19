@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import css from 'react-css-modules';
 
 import { percentageShape } from '../../propTypes';
@@ -15,6 +16,10 @@ export class SeekBar extends Component {
     super(props);
 
     this.handleSeek = this.handleSeek.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   handleSeek(offset) {

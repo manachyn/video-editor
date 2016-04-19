@@ -1,5 +1,6 @@
 import invariant from 'invariant';
 import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import { Surface } from 'gl-react-dom';
 import css from 'react-css-modules';
 
@@ -24,6 +25,10 @@ export class FilterChainSurface extends Component {
 
     this.builtInRenderers = { overlay: Overlay };
     this.renderFilter = this.renderFilter.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   getRenderer(type) {
