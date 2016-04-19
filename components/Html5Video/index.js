@@ -170,12 +170,15 @@ export default class Html5Video extends Component {
   handleAbort() {
     this.props.actions.abort(this.video.networkState, this.video.error.code);
   }
+
   handleError() {
     this.props.actions.error(this.video.networkState, this.video.error.code);
   }
+
   handleEmptied() {
     this.props.actions.emptied(this.video.networkState);
   }
+
   handleStalled() {
     this.props.actions.stalled(this.video.networkState);
   }
@@ -224,6 +227,7 @@ export default class Html5Video extends Component {
     this.props.actions.durationChange(this.video.duration);
   }
 
+  @throttle(500)
   handleTimeUpdate() {
     if (this.props.onTimeUpdate) this.props.onTimeUpdate();
     this.props.actions.timeUpdate(this.video.currentTime, this.video.duration);
@@ -248,6 +252,7 @@ export default class Html5Video extends Component {
     });
   }
 
+  @throttle(10)
   handleVolumeChange() {
     this.props.actions.volumeChange(
         this.video.volume,
